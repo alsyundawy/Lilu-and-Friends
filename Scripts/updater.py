@@ -1352,6 +1352,7 @@ class Updater:
         print("    Loading github URL...")
         try:
             html = self.dl.get_string(url,progress=False)
+            assert html
         except:
             return
         for line in html.split("\n"):
@@ -1364,6 +1365,7 @@ class Updater:
         print("    Loading github URL...")
         try:
             html = self.dl.get_string(url,progress=False)
+            assert html
         except:
             return
         print("    Gathering asset URLs...")
@@ -1445,6 +1447,7 @@ class Updater:
                             print("     - Not found - falling back to {}...".format(b.capitalize()))
                             fallback = b # Set our fallback for later printing
                             build_steps = kext[b]
+                            break
             if not build_steps:
                 self.cprint("     - {}Not found and no fall back - skipping...".format(self.er_color))
                 fail.append("    " + kext["Name"])
